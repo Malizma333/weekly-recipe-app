@@ -1,7 +1,8 @@
-import './App.css';
-import { WeekTable } from './components/week_table.js';
-import { MealDetails } from './components/meal_details.js';
 import React, { useState } from 'react';
+
+import './App.css';
+import { DetailContainer } from './containers/detail_container';
+import { TableContainer } from './containers/table_container';
 
 function App() {
   const [selectedMeal, setSelectedMeal] = useState(null);
@@ -13,8 +14,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {WeekTable(handleMealClick)}
-        {selectedMeal && MealDetails(selectedMeal)}
+        {TableContainer(handleMealClick)}
+        {DetailContainer(selectedMeal)}
       </header>
     </div>
   );
