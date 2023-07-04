@@ -1,0 +1,12 @@
+.week-table {
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.week-table th,
+.week-table td {
+  border: 2px solid white;
+  padding: 8px;
+  width: 10em;
+}

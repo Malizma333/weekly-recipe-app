@@ -12,16 +12,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.week-table {
-  border: 1px solid white;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-.week-table th,
-.week-table td {
-  border: 1px solid white;
-  padding: 8px;
-  width: 10em;
-}
