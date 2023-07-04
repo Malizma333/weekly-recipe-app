@@ -2,7 +2,8 @@ export const tableHeaders = [
   'Recipe Name',
   'Description',
   'Allergens',
-  'Instructions'
+  'Instructions',
+  'Prepare Time'
 ]
 
 export const weekDays = [

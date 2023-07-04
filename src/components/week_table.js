@@ -1,14 +1,14 @@
 import './week_table.css';
 import React, { useState, useEffect } from 'react';
-import { getRecipeData } from '../services/meal_data_fetch.js';
 import { weekDays, tableHeaders } from '../constants';
+import { retrieveWeeklyMeals } from '../utils/meal_shuffler';
 
 export const WeekTable = (handleMealClick) => {
   const [recipes, setRecipe] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const recipeData = await getRecipeData();
+      const recipeData = await retrieveWeeklyMeals();
       setRecipe(recipeData);
     };
 
@@ -19,8 +19,8 @@ export const WeekTable = (handleMealClick) => {
     <table className='week-table'>
       <thead>
         <tr>
-          {weekDays.map((day) => (
-            <th>{day}</th>
+          {weekDays.map((day, i) => (
+            <th key={i}> {day} </th>
           ))}
         </tr>
       </thead>
