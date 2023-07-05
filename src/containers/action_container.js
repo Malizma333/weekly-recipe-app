@@ -6,7 +6,7 @@ export const ActionContainer = () => {
     <div className="action-container">
       {Button("Shuffle", 'shuffle_icon.png', onShuffle)}
       {Button("Add Recipe", 'add_icon.png', onAdd)}
-      {Button("Settings", 'settings_icon.png', )}
+      {Button("Settings", 'settings_icon.png', onSettings)}
     </div>
   );
 }
@@ -17,4 +17,8 @@ const onShuffle = () => {
 
 const onAdd = () => {
   console.log("Adding");
+}
+
+const onSettings = () => {
+  console.log("Settings");
 }
