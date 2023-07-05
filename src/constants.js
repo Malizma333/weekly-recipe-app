@@ -15,3 +15,13 @@ export const weekDays = [
   'Friday',
   'Saturday'
 ]
+
+export const brinnerIndex = 2
+
+export const brinnerMeal = {
+  'Recipe Name': "Brinner",
+  'Description': "Breakfast for dinner",
+  'Allergens': "",
+  'Instructions': "",
+  'Prepare Time': "0:05:00"
+}
