@@ -27,7 +27,11 @@ export const WeekTable = (handleMealClick) => {
       <tbody>
         <tr>
           {recipes.map((meal, index) => (
-            <td key={index} onClick={() => handleMealClick(meal)}>
+            <td
+              className='recipe-name-text'
+              key={index}
+              onClick={() => handleMealClick(meal)}
+            >
               {meal[tableHeaders[0]]}
             </td>
           ))}

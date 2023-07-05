@@ -10,3 +10,11 @@
   padding: 8px;
   width: 10em;
 }
+
+.recipe-name-text {
+  cursor: pointer;
+}
+
+.recipe-name-text:hover {
+  text-decoration: underline;
+}
