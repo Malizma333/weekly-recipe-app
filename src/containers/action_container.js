@@ -4,9 +4,9 @@ import { Button } from '../components/button';
 export const ActionContainer = () => {
   return (
     <div className="action-container">
-      {Button("Shuffle", 'shuffle_icon.png', onShuffle)}
-      {Button("Add Recipe", 'add_icon.png', onAdd)}
-      {Button("Settings", 'settings_icon.png', onSettings)}
+      {Button("Shuffle", 'shuffle_icon.png', onShuffle, 'Shuffle Recipes')}
+      {Button("Add Recipe", 'add_icon.png', onAdd, 'Add New Recipe')}
+      {Button("Settings", 'settings_icon.png', onSettings, 'Settings')}
     </div>
   );
 }

@@ -1,16 +1,33 @@
 import './button.css';
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 
-export const Button = (name, icon, onClick) => {
-  const buttonRef = useRef(null);
+export const Button = (name, icon, onClick, tooltip) => {
+
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowTooltip(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  };
 
   return (
-    <button ref={buttonRef} onClick={onClick} className='button'>
-      <img
-        src={`${process.env.PUBLIC_URL}/icons/${icon}`}
-        alt={name}
-        className='button-icon'
-      />
-    </button>
+    <div className='button-container'>
+      <button
+        onClick={onClick}
+        className='button'
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <img
+          src={`${process.env.PUBLIC_URL}/icons/${icon}`}
+          alt={name}
+          className='button-icon'
+        />
+      </button>
+      {showTooltip && <div className="button-tooltip">{tooltip}</div>}
+    </div>
   );
 }
