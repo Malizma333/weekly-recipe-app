@@ -2,8 +2,10 @@ import './meal_details.css';
 import { tableHeaders } from '../constants';
 
 export const MealDetails = (selectedMeal) => {
-  const allergens = selectedMeal[tableHeaders[2]].split(',')
-
+  const allergens = selectedMeal[tableHeaders[2]]
+    .split(',')
+    .filter(part => part.trim() !== '');
+  
   return (
     <div className='meal-details'>
       <div className='header-container'>
@@ -11,14 +13,16 @@ export const MealDetails = (selectedMeal) => {
         {DurationContainer(selectedMeal)}
       </div>
       <p>{selectedMeal[tableHeaders[1]]}</p>
-      <p>Allergens</p>
-      <ul className='allergen-list'>
-        {allergens.map((allergen, index) => (
-          <li key={index}>
-            {allergen}
-          </li>
-        ))}
-      </ul>
+      {allergens.length > 0 && (<div>
+        <p>Allergens</p>
+        <ul className='allergen-list'>
+          {allergens.map((allergen, index) => (
+            <li key={index}>
+              {allergen}
+            </li>
+          ))}
+        </ul>
+      </div>)}
       <a href={selectedMeal[tableHeaders[3]]} target="_blank" rel="noopener noreferrer">
         Recipe Instructions
       </a>

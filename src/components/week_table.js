@@ -8,7 +8,7 @@ export const WeekTable = (handleMealClick) => {
 
   useEffect(() => {
     const getData = async () => {
-      const recipeData = await retrieveShuffledMeals();
+      const recipeData = retrieveShuffledMeals();
       setRecipe(recipeData);
     };
 

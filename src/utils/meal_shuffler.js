@@ -1,9 +1,9 @@
 import { getRecipeData } from "../services/meal_data_fetch";
 import { brinnerIndex, brinnerMeal } from "../constants";
 
-export const retrieveShuffledMeals = async () => {
-  const recipeData = await getRecipeData();
+const recipeData = await getRecipeData();
 
+export const retrieveShuffledMeals = () => {
   const weekRecipe = [];
 
   while (weekRecipe.length < 6) {
@@ -16,8 +16,6 @@ export const retrieveShuffledMeals = async () => {
   }
 
   weekRecipe.splice(brinnerIndex, 0, brinnerMeal)
-
-  console.log(weekRecipe[0], weekRecipe[brinnerIndex])
 
   return weekRecipe;
 }
