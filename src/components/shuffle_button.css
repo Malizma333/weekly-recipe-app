@@ -1,0 +1,16 @@
+.shuffle-icon {
+  height: 20px;
+  position: relative;
+  right: 2px;
+  vertical-align: middle;
+  width: auto;
+}
+
+.shuffle-button {
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  justify-content: center;
+  margin-right: 10px;
+  width: 30px;
+}
