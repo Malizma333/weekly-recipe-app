@@ -9,6 +9,7 @@
 
 .allergen-list {
   list-style-position: inside;
+  margin-top: -10px;
 }
 
 .duration-container {
@@ -16,12 +17,13 @@
   display: flex;
   height: 50px;
   justify-content: center;
+  margin-bottom: -20px;
   margin-top: -20px;
   text-align: center;
 }
 
 .time-icon {
   height: 1em;
-  margin: 10px;
+  margin-right: 10px;
   width: auto;
 }
