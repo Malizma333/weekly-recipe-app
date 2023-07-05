@@ -1,12 +1,12 @@
 import './detail_container.css';
-import { MealDetails } from '../components/meal_details.js';
+import { RecipeDetails } from '../components/recipe_details.js';
 import { WelcomeScreen } from '../components/welcome_screen';
 
-export const DetailContainer = (selectedMeal) => {
+export const DetailContainer = (selectedRecipe) => {
   return (
     <div className="detail-container">
-      {selectedMeal && MealDetails(selectedMeal)}
-      {!selectedMeal && WelcomeScreen()}
+      {selectedRecipe && RecipeDetails(selectedRecipe)}
+      {!selectedRecipe && WelcomeScreen()}
     </div>
   );
 }

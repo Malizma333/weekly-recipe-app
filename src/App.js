@@ -5,17 +5,17 @@ import { DetailContainer } from './containers/detail_container';
 import { TableContainer } from './containers/table_container';
 
 function App() {
-  const [selectedMeal, setSelectedMeal] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
-  const handleMealClick = (meal) => {
-    setSelectedMeal(meal);
+  const handleRecipeClick = (recipe) => {
+    setSelectedRecipe(recipe);
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        {TableContainer(handleMealClick)}
-        {DetailContainer(selectedMeal)}
+        {TableContainer(handleRecipeClick)}
+        {DetailContainer(selectedRecipe)}
       </header>
     </div>
   );

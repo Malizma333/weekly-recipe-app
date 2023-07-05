@@ -1,9 +1,9 @@
-import { getRecipeData } from "../services/meal_data_fetch";
-import { brinnerIndex, brinnerMeal } from "../constants";
+import { getRecipeData } from "../services/recipe_data_fetch";
+import { brinnerIndex, brinnerRecipe } from "../constants";
 
 const recipeData = await getRecipeData();
 
-export const retrieveShuffledMeals = () => {
+export const retrieveShuffledRecipes = () => {
   const weekRecipe = [];
 
   while (weekRecipe.length < 6) {
@@ -15,7 +15,7 @@ export const retrieveShuffledMeals = () => {
     }
   }
 
-  weekRecipe.splice(brinnerIndex, 0, brinnerMeal)
+  weekRecipe.splice(brinnerIndex, 0, brinnerRecipe)
 
   return weekRecipe;
 }

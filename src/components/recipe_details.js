@@ -1,18 +1,18 @@
-import './meal_details.css';
+import './recipe_details.css';
 import { tableHeaders } from '../constants';
 
-export const MealDetails = (selectedMeal) => {
-  const allergens = selectedMeal[tableHeaders[2]]
+export const RecipeDetails = (selectedRecipe) => {
+  const allergens = selectedRecipe[tableHeaders[2]]
     .split(',')
     .filter(part => part.trim() !== '');
   
   return (
-    <div className='meal-details'>
+    <div className='recipe-details'>
       <div className='header-container'>
-        <h3>{selectedMeal[tableHeaders[0]]}</h3>
-        {DurationContainer(selectedMeal)}
+        <h3>{selectedRecipe[tableHeaders[0]]}</h3>
+        {DurationContainer(selectedRecipe)}
       </div>
-      <p>{selectedMeal[tableHeaders[1]]}</p>
+      <p>{selectedRecipe[tableHeaders[1]]}</p>
       {allergens.length > 0 && (<div>
         <p>Allergens</p>
         <ul className='allergen-list'>
@@ -23,14 +23,14 @@ export const MealDetails = (selectedMeal) => {
           ))}
         </ul>
       </div>)}
-      <a href={selectedMeal[tableHeaders[3]]} target="_blank" rel="noopener noreferrer">
+      <a href={selectedRecipe[tableHeaders[3]]} target="_blank" rel="noopener noreferrer">
         Recipe Instructions
       </a>
     </div>
   )
 }
 
-const DurationContainer = (selectedMeal) => {
+const DurationContainer = (selectedRecipe) => {
   return (
     <div className='duration-container'>
       <img
@@ -38,7 +38,7 @@ const DurationContainer = (selectedMeal) => {
         alt="Time Icon"
         className='time-icon'
       />
-      <p>{selectedMeal[tableHeaders[4]]}</p>
+      <p>{selectedRecipe[tableHeaders[4]]}</p>
     </div>
   )
 }
