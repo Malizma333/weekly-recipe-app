@@ -1,11 +1,11 @@
 import './table_container.css';
 import { WeekTable } from '../components/week_table.js';
-import { ShuffleButton } from '../components/shuffle_button';
+import { ActionContainer } from './action_container';
 
 export const TableContainer = (handleRecipeClick) => {
   return (
     <div className="table-container">
-      {ShuffleButton()}
+      {ActionContainer()}
       {WeekTable(handleRecipeClick)}
     </div>
   );

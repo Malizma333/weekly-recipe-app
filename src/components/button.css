@@ -1,4 +1,4 @@
-.shuffle-icon {
+.button-icon {
   height: 20px;
   position: relative;
   right: 2px;
@@ -6,7 +6,7 @@
   width: auto;
 }
 
-.shuffle-button {
+.button {
   align-items: center;
   cursor: pointer;
   height: 30px;

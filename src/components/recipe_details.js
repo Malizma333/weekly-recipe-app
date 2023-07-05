@@ -34,7 +34,7 @@ const DurationContainer = (selectedRecipe) => {
   return (
     <div className='duration-container'>
       <img
-        src={`${process.env.PUBLIC_URL}/time_icon.png`}
+        src={`${process.env.PUBLIC_URL}/icons/time_icon.png`}
         alt="Time Icon"
         className='time-icon'
       />
