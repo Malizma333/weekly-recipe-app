@@ -19,3 +19,11 @@ export const retrieveShuffledRecipes = () => {
 
   return weekRecipe;
 }
+
+// currentData = Pull from sheet <- call once, save in var for access
+// currentWeekSchedule = Pull from local storage
+// unusedRecipes = Pull from local storage
+// clear unusedRecipes of recipes that aren't in currentData
+// pop 6 unusedRecipes for a new weekly schedule
+// if less than 6 left, populate a new unusedRecipes list with all from currentData
+// store new unusedRecipes and new currentWeekSchedule
