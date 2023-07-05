@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { weekDays, tableHeaders } from '../constants';
 import { retrieveShuffledRecipes } from '../utils/recipe_shuffler';
 
-export const WeekTable = (handleRecipeClick) => {
+export const WeekTable = ({ recipeClick }) => {
   const [recipes, setRecipe] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export const WeekTable = (handleRecipeClick) => {
             <td
               className='recipe-name-text'
               key={index}
-              onClick={() => handleRecipeClick(recipe)}
+              onClick={() => recipeClick(recipe)}
             >
               {recipe[tableHeaders[0]]}
             </td>

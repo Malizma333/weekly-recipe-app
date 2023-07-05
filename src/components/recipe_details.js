@@ -1,21 +1,21 @@
 import './recipe_details.css';
 import { tableHeaders } from '../constants';
 
-export const RecipeDetails = (selectedRecipe) => {
+export const RecipeDetails = ({ selectedRecipe }) => {
   return (
     <div className='recipe-details'>
       <div className='header-container'>
         <h3>{selectedRecipe[tableHeaders[0]]}</h3>
-        {DurationContainer(selectedRecipe)}
+        <DurationContainer duration={ selectedRecipe[tableHeaders[4]] } />
       </div>
       <p>{selectedRecipe[tableHeaders[1]]}</p>
-      {AllergensList(selectedRecipe[tableHeaders[2]])}
-      {RecipeLink(selectedRecipe[tableHeaders[3]])}
+      <AllergensList allergensString={ selectedRecipe[tableHeaders[2]] } />
+      <RecipeLink link={ selectedRecipe[tableHeaders[3]] } />
     </div>
   )
 }
 
-const DurationContainer = (selectedRecipe) => {
+const DurationContainer = ({ duration }) => {
   return (
     <div className='duration-container'>
       <img
@@ -23,12 +23,12 @@ const DurationContainer = (selectedRecipe) => {
         alt="Time Icon"
         className='time-icon'
       />
-      <p>{selectedRecipe[tableHeaders[4]]}</p>
+      <p>{duration}</p>
     </div>
   )
 }
 
-const AllergensList = (allergensString) => {
+const AllergensList = ({ allergensString }) => {
   if(allergensString.length === 0) return;
 
   const allergens = allergensString.split(',')
@@ -48,7 +48,7 @@ const AllergensList = (allergensString) => {
   )
 }
 
-const RecipeLink = (link) => {
+const RecipeLink = ({ link }) => {
   if(link.length === 0) return;
 
   return <a href={link} target="_blank" rel="noopener noreferrer">

@@ -1,7 +1,7 @@
 import './button.css';
 import React, { useState } from 'react';
 
-export const Button = (name, icon, onClick, tooltip) => {
+export const Button = ({ name, icon, onClick, tooltip }) => {
 
   const [showTooltip, setShowTooltip] = useState(false);
 
