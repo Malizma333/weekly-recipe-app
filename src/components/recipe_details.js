@@ -2,10 +2,6 @@ import './recipe_details.css';
 import { tableHeaders } from '../constants';
 
 export const RecipeDetails = (selectedRecipe) => {
-  const allergens = selectedRecipe[tableHeaders[2]]
-    .split(',')
-    .filter(part => part.trim() !== '');
-  
   return (
     <div className='recipe-details'>
       <div className='header-container'>
@@ -13,19 +9,8 @@ export const RecipeDetails = (selectedRecipe) => {
         {DurationContainer(selectedRecipe)}
       </div>
       <p>{selectedRecipe[tableHeaders[1]]}</p>
-      {allergens.length > 0 && (<div>
-        <p>Allergens</p>
-        <ul className='allergen-list'>
-          {allergens.map((allergen, index) => (
-            <li key={index}>
-              {allergen}
-            </li>
-          ))}
-        </ul>
-      </div>)}
-      <a href={selectedRecipe[tableHeaders[3]]} target="_blank" rel="noopener noreferrer">
-        Recipe Instructions
-      </a>
+      {AllergensList(selectedRecipe[tableHeaders[2]])}
+      {RecipeLink(selectedRecipe[tableHeaders[3]])}
     </div>
   )
 }
@@ -41,4 +26,32 @@ const DurationContainer = (selectedRecipe) => {
       <p>{selectedRecipe[tableHeaders[4]]}</p>
     </div>
   )
+}
+
+const AllergensList = (allergensString) => {
+  if(allergensString.length === 0) return;
+
+  const allergens = allergensString.split(',')
+    .filter(part => part.trim() !== '');
+  
+  return (
+    <div>
+      <p>Allergens</p>
+      <ul className='allergen-list'>
+        {allergens.map((allergen, index) => (
+          <li key={index}>
+            {allergen}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+const RecipeLink = (link) => {
+  if(link.length === 0) return;
+
+  return <a href={link} target="_blank" rel="noopener noreferrer">
+    Recipe Instructions
+  </a>
 }
