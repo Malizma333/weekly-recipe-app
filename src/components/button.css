@@ -1,0 +1,40 @@
+.button-container {
+  position: relative;
+}
+
+.button {
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  justify-content: center;
+  margin: 3px;
+  margin-right: 10px;
+  width: 30px;
+}
+
+.button-icon {
+  height: 20px;
+  position: relative;
+  right: 2px;
+  vertical-align: middle;
+  width: auto;
+}
+
+.button-tooltip {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  color: #333;
+  font-size: 14px;
+  left: 50%;
+  max-width: 125px;
+  opacity: 0.9;
+  overflow: hidden;
+  padding: 5px;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  top: 100%;
+  transform: translateX(-50%);
+  width: max-content;
+  z-index: 9999;
+}
