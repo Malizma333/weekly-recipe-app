@@ -14,8 +14,7 @@ export const PrepareTimeInput = ({ recipeData, handleInputChange }) => {
         value={recipeData[fieldName]}
         onChange={handleInputChange}
         placeholder="HH:MM"
-        pattern="[0-9]{2}:[0-9]{2}" // Enforce HH:MM format
-        required
+        pattern="[0-9]{2}:[0-9]{2}"
       />
     </div>
   );

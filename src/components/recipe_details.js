@@ -16,6 +16,8 @@ export const RecipeDetails = ({ selectedRecipe }) => {
 }
 
 const DurationContainer = ({ duration }) => {
+  if(!duration || duration.length === 0) return;
+  
   return (
     <div className='duration-container'>
       <img
@@ -29,7 +31,7 @@ const DurationContainer = ({ duration }) => {
 }
 
 const AllergensList = ({ allergensString }) => {
-  if(allergensString.length === 0) return;
+  if(!allergensString || allergensString.length === 0) return;
 
   const allergens = allergensString.split(',')
     .filter(part => part.trim() !== '');
@@ -49,7 +51,7 @@ const AllergensList = ({ allergensString }) => {
 }
 
 const RecipeLink = ({ link }) => {
-  if(link.length === 0) return;
+  if(!link || link.length === 0) return;
 
   return <a href={link} target="_blank" rel="noopener noreferrer">
     Recipe Instructions
