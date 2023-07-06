@@ -4,8 +4,6 @@
 - Detailed recipe information
 - Add recipe option
 - Spreadsheet for data management
-- - Link to spreadsheet button
-- Toolbar container
 
 ### To Do
 
