@@ -1,8 +1,8 @@
 .recipe-form-container {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  align-items: center;
 }
 
 .recipe-form-container label {
@@ -13,11 +13,11 @@
 .recipe-form-container input,
 .recipe-form-container textarea,
 .recipe-form-container select {
-  flex-basis: 70%;
-  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  flex-basis: 70%;
   margin: 6px;
+  padding: 8px;
 }
 
 .recipe-form-container button[type="submit"],
