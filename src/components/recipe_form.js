@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
 import './recipe_form.css';
+import React, { useState } from 'react';
+
 import { NameInput } from './recipe_form/name_input';
 import { DescriptionInput } from './recipe_form/description_input';
 import { RecipeLinkInput } from './recipe_form/recipe_link';
@@ -10,6 +11,7 @@ import { FormButtons } from './recipe_form/form_buttons';
 
 import { writeRecipeDataToCSV } from '../services/recipe_data_write';
 import { tableHeaders } from '../constants';
+import isURL from 'validator/lib/isURL';
 
 export const RecipeForm = ({ setDivVisible }) => {
   const recipeTemplate = tableHeaders.reduce((acc, header) => {
@@ -53,6 +55,16 @@ export const RecipeForm = ({ setDivVisible }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    const isValidRecipeLink = 
+      recipeData[tableHeaders[3]].trim() === '' ||
+      isURL(recipeData[tableHeaders[3]]);
+
+    if (!isValidRecipeLink) {
+      console.log('Invalid recipe link');
+      return;
+    }
+
     writeRecipeDataToCSV(recipeData);
     setRecipeData(recipeTemplate);
     setDivVisible(false);
