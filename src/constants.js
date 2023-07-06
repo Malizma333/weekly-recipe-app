@@ -23,7 +23,7 @@ export const brinnerRecipe = {
   'Description': "Breakfast for dinner",
   'Allergens': "",
   'Instructions': "",
-  'Prepare Time': "0:05:00"
+  'Prepare Time': "00:05"
 }
 
 export const sheetApiUrl = 'https://sheet.best/api/sheets/bc0e1e85-d071-4768-8dd9-6176279aa2d8'
