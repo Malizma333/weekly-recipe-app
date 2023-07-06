@@ -1,0 +1,39 @@
+.recipe-form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.recipe-form-container label {
+  flex-basis: 30%;
+  margin-right: 20px;
+}
+
+.recipe-form-container input,
+.recipe-form-container textarea,
+.recipe-form-container select {
+  flex-basis: 70%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 6px;
+}
+
+.recipe-form-container button[type="submit"],
+.recipe-form-container button[type="button"] {
+  flex-basis: 100%;
+  margin-top: 10px;
+}
+
+.allergen-list {
+  list-style-type: none;
+}
+
+.allergen-list li {
+  margin-bottom: 5px;
+}
+
+.allergen-list li button {
+  margin-left: 8px;
+}
