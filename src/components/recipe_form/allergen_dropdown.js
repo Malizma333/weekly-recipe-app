@@ -5,8 +5,8 @@ export const AllergenDropdown = ({ handleAllergenSelect, allergenOptions }) => {
   const fieldName = tableHeaders.find((header) => header.toLowerCase() === 'allergens');
   
   return (
-    <div>
-      <label htmlFor={fieldName}>{fieldName}:</label>
+    <div className='form-row'>
+      <label htmlFor={fieldName}>{fieldName}</label>
       <select
         id={fieldName}
         name={fieldName}

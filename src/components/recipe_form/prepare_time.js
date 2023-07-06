@@ -6,7 +6,7 @@ export const PrepareTimeInput = ({ recipeData, handleInputChange }) => {
 
   return (
     <div className="form-row">
-      <label htmlFor={fieldName}>Prepare Time:</label>
+      <label htmlFor={fieldName}>Prepare Time</label>
       <input
         type="text"
         id={fieldName}

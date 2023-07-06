@@ -11,7 +11,7 @@ export const SelectedAllergensList = ({ selectedAllergens, handleAllergenRemove 
 
   return (
     <div className="allergen-list">
-      <p>Selected Allergens:</p>
+      <p style={{ textDecoration: 'underline' }}>Selected Allergens</p>
       <ul>
         {allergensArray.map((allergen) => (
           <li key={allergen}>

@@ -11,7 +11,7 @@ export const RecipeLinkInput = ({ recipeData, handleInputChange }) => {
 
   return (
     <div className="form-row">
-      <label htmlFor="recipeLink">Recipe Link:</label>
+      <label htmlFor="recipeLink">Recipe Link</label>
       <input
         type="text"
         id={fieldName}
