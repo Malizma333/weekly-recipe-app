@@ -1,5 +1,6 @@
 .recipe-details {
   display: flexbox;
+  width: 30em;
 }
 
 .header-container {

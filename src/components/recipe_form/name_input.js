@@ -6,7 +6,7 @@ export const NameInput = ({ recipeData, handleInputChange }) => {
 
   return (
     <div className="form-row">
-      <label htmlFor="name">Name:</label>
+      <label htmlFor="name">Name</label>
       <input
         type="text"
         id={fieldName}

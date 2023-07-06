@@ -4,6 +4,7 @@ import './App.css';
 import { DetailContainer } from './containers/detail_container';
 import { TableContainer } from './containers/table_container';
 import { AddRecipeContainer } from './containers/recipe_form_container';
+import { ActionContainer } from './containers/action_container';
 
 function App() {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -21,7 +22,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TableContainer recipeClick={handleRecipeClick} addRecipeClick={handleAddRecipeClick} />
+        <ActionContainer addRecipeClick={handleAddRecipeClick} />
+        <TableContainer recipeClick={handleRecipeClick} />
         <DetailContainer selectedRecipe={selectedRecipe} />
         {addingRecipe && <AddRecipeContainer setDivVisible={setNewRecipeVisible} />}
       </header>

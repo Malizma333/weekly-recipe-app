@@ -21,7 +21,7 @@ const DurationContainer = ({ duration }) => {
   return (
     <div className='duration-container'>
       <img
-        src={`${process.env.PUBLIC_URL}/icons/time_icon.png`}
+        src={`${process.env.PUBLIC_URL}/icons/time_icon.svg`}
         alt="Time Icon"
         className='time-icon'
       />
