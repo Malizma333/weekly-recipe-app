@@ -8,60 +8,58 @@ import { SelectedAllergensList } from './recipe_form/allergen_selection';
 import { PrepareTimeInput } from './recipe_form/prepare_time';
 import { FormButtons } from './recipe_form/form_buttons';
 
+import { writeRecipeDataToCSV } from '../services/recipe_data_write';
+import { tableHeaders } from '../constants';
+
 export const RecipeForm = ({ setDivVisible }) => {
-  const [recipeData, setRecipeData] = useState({
-    name: '',
-    description: '',
-    recipeLink: '',
-    allergens: [],
-    prepareTime: '',
-  });
+  const recipeTemplate = tableHeaders.reduce((acc, header) => {
+    acc[header] = '';
+    return acc;
+  }, {});
+
+  const [recipeData, setRecipeData] = useState(recipeTemplate);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setRecipeData((prevData) => ({ ...prevData, [name]: value }));
+    const fieldName = tableHeaders.find(header => header.toLowerCase() === name.toLowerCase());
+    if (fieldName) {
+      setRecipeData((prevData) => ({ ...prevData, [fieldName]: value }));
+    }
   };
-
-  const [selectedAllergens, setSelectedAllergens] = useState([]);
 
   const handleAllergenSelect = (e) => {
     const selectedAllergen = e.target.options[e.target.selectedIndex];
-
+    const fieldName = tableHeaders.find((header) => header.toLowerCase() === 'allergens');
+  
     if (selectedAllergen.value === '') return;
-    if (selectedAllergens.includes(selectedAllergen.text)) return;
-
-    setSelectedAllergens([...selectedAllergens, selectedAllergen.text]);
+    if (recipeData[fieldName].includes(selectedAllergen.text)) return;
+  
+    const updatedAllergens = recipeData[fieldName]
+      ? `${recipeData[fieldName]},${selectedAllergen.text}`
+      : selectedAllergen.text;
+  
+    setRecipeData((prevData) => ({ ...prevData, [fieldName]: updatedAllergens }));
   };
-
+  
   const handleAllergenRemove = (allergen) => {
-    const updatedAllergens = selectedAllergens.filter(
-      (selected) => selected !== allergen
-    );
-    setSelectedAllergens(updatedAllergens);
+    const fieldName = tableHeaders.find((header) => header.toLowerCase() === 'allergens');
+    const updatedAllergens = recipeData[fieldName]
+      .split(',')
+      .filter((selected) => selected.trim() !== allergen.trim())
+      .join(',');
+  
+    setRecipeData((prevData) => ({ ...prevData, [fieldName]: updatedAllergens }));
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(recipeData);
-    setRecipeData({
-      name: '',
-      description: '',
-      recipeLink: '',
-      allergens: [],
-      prepareTime: '',
-    });
+    writeRecipeDataToCSV(recipeData);
+    setRecipeData(recipeTemplate);
     setDivVisible(false);
   };
 
   const handleFormCancel = () => {
-    setRecipeData({
-      name: '',
-      description: '',
-      recipeLink: '',
-      allergens: [],
-      prepareTime: '',
-    });
+    setRecipeData(recipeTemplate);
     setDivVisible(false);
   };
 
@@ -83,7 +81,7 @@ export const RecipeForm = ({ setDivVisible }) => {
           allergenOptions={allergenOptions}
         />
         <SelectedAllergensList
-          selectedAllergens={selectedAllergens}
+          selectedAllergens={recipeData[tableHeaders[2]]}
           handleAllergenRemove={handleAllergenRemove}
         />
         <PrepareTimeInput recipeData={recipeData} handleInputChange={handleInputChange} />
