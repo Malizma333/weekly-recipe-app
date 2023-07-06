@@ -36,5 +36,5 @@
   top: 100%;
   transform: translateX(-50%);
   width: max-content;
-  z-index: 9999;
+  z-index: 10;
 }

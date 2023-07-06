@@ -1,22 +1,18 @@
 import './action_container.css'
 import { Button } from '../components/button';
 
-export const ActionContainer = () => {
+export const ActionContainer = ({ addRecipeClick }) => {
   return (
     <div className="action-container">
-      {Button("Shuffle", 'shuffle_icon.png', onShuffle, 'Shuffle Recipes')}
-      {Button("Add Recipe", 'add_icon.png', onAdd, 'Add New Recipe')}
-      {Button("Settings", 'settings_icon.png', onSettings, 'Settings')}
+      <Button name='Shuffle' icon='shuffle_icon.png' onClick={onShuffle} tooltip='Shuffle Recipes' />
+      <Button name='Add Recipe' icon='add_icon.png' onClick={addRecipeClick} tooltip='Add New Recipe' />
+      <Button name='Settings' icon='settings_icon.png' onClick={onSettings} tooltip='Settings' />
     </div>
   );
 }
 
 const onShuffle = () => {
   console.log("Shuffling");
-}
-
-const onAdd = () => {
-  console.log("Adding");
 }
 
 const onSettings = () => {
