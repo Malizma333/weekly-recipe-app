@@ -14,3 +14,4 @@
   - Default brinner day
 - Shuffle button functionality
 - Save week schedule to local storage
+- Meal requests for the next week
