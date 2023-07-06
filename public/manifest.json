@@ -3,8 +3,8 @@
   "name": "Weekly Recipe App",
   "icons": [
     {
-      "src": "icons/recipe_template_icon.png",
-      "type": "image/png",
+      "src": "icons/recipe_template_icon.svg",
+      "type": "image/svg",
       "sizes": "200x200"
     }
   ],
