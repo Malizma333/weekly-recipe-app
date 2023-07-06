@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { DetailContainer } from './containers/detail_container';
 import { TableContainer } from './containers/table_container';
-import { AddRecipeContainer } from './containers/add_recipe_container';
+import { AddRecipeContainer } from './containers/recipe_form_container';
 
 function App() {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
