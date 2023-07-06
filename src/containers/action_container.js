@@ -1,5 +1,6 @@
 import './action_container.css'
 import { Button } from '../components/button';
+import { sheetUrl } from '../constants';
 
 export const ActionContainer = ({ addRecipeClick }) => {
   return (
@@ -21,5 +22,5 @@ const onSettings = () => {
 }
 
 const onLink = () => {
-  console.log("Link...")
+  window.open(sheetUrl, '_blank');
 }

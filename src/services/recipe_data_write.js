@@ -1,7 +1,7 @@
-import { sheetURL } from '../constants';
+import { sheetApiUrl } from '../constants';
 
 export const writeRecipeDataToCSV = async (recipeData) => {
-  await fetch(sheetURL, {
+  await fetch(sheetApiUrl, {
     method: "POST",
     mode: "cors",
     headers: {
