@@ -4,11 +4,11 @@
 - Detailed recipe information
 - Add recipe option
 - Spreadsheet for data management
+- - Link to spreadsheet button
+- Toolbar container
 
 ### To Do
 
-- Link to spreadsheet button
-- Toolbar container
 - Settings window
   - Day/Night mode
   - Default brinner day
