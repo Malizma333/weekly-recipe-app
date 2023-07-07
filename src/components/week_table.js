@@ -30,7 +30,7 @@ export const WeekTable = ({ setRecipe, mealSchedule, setMealSchedule }) => {
               key={index}
               onClick={() => handleRecipeClick(recipe)}
             >
-              {recipe[tableHeaders[0]]}
+              {recipe[tableHeaders.name]}
             </td>
           ))}
         </tr>

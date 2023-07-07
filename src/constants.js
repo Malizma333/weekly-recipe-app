@@ -1,10 +1,10 @@
-export const tableHeaders = [
-  'Recipe Name',
-  'Description',
-  'Allergens',
-  'Instructions',
-  'Prepare Time'
-]
+export const tableHeaders = {
+  name: 'Recipe Name',
+  desc: 'Description',
+  allergens: 'Allergens',
+  link: 'Instructions',
+  time: 'Prepare Time'
+}
 
 export const weekDays = [
   'Sunday',
@@ -49,3 +49,10 @@ export const pages = {
   settings: 'settings',
   recipeRequest: 'recipeRequest'
 }
+
+export const allergenOptions = [
+  { value: '', label: 'Select Allergen' },
+  { value: 'peanuts', label: 'Peanuts' },
+  { value: 'treeNuts', label: 'Tree Nuts' },
+  { value: 'milk', label: 'Milk' },
+];

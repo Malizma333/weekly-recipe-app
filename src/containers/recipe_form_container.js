@@ -1,5 +1,5 @@
 import './recipe_form_container.css';
-import { RecipeForm } from '../components/recipe_form';
+import { RecipeForm } from '../components/pages/recipe_form';
 
 export const AddRecipeContainer = ({ close }) => {
   return (

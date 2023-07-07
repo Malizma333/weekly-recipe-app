@@ -1,11 +1,8 @@
 import './form_error.css'
 import React from 'react';
-
-import { tableHeaders } from '../../constants';
 import isURL from 'validator/lib/isURL';
 
-export const RecipeLinkInput = ({ recipeData, handleInputChange }) => {
-  const fieldName = tableHeaders.find((header) => header.toLowerCase() === 'instructions');
+export const RecipeLinkInput = ({ recipeData, handleInputChange, fieldName }) => {
   const urlValue = recipeData[fieldName];
   const isValidURL = urlValue.trim() === '' || isURL(urlValue);
 
