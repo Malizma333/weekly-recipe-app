@@ -1,8 +1,9 @@
 import './settings_container.css';
 import { useState, useEffect } from 'react';
-import { weekDays, colorPalette, dataKeys } from '../constants';
+import { colorPalette, dataKeys } from '../constants';
 import { saveData, loadData } from '../services/locals_retrieval';
 import { defaultBrinnerIndex, defaultIsDarkMode } from '../constants';
+import { Settings } from '../components/pages/settings';
 
 export const SettingsContainer = ({ close }) => {
   const [isDarkMode, setIsDarkMode] = useState(defaultIsDarkMode);
@@ -16,7 +17,7 @@ export const SettingsContainer = ({ close }) => {
     }
   }, []);
 
-  const handleDarkModeToggle = () => {
+  const handleThemeToggle = () => {
     const updatedSettings = {
       isDarkMode: !isDarkMode,
       brinnerDay,
@@ -54,60 +55,16 @@ export const SettingsContainer = ({ close }) => {
     saveData(updatedSettings, dataKeys.settings);
   };
 
-  const renderModeIcon = () => {
-    return isDarkMode ? (
-      <img
-        src={`${process.env.PUBLIC_URL}/icons/moon_icon.svg`}
-        alt="Moon Icon"
-        className="checkbox-icon"
-      />
-    ) : (
-      <img
-        src={`${process.env.PUBLIC_URL}/icons/sun_icon.svg`}
-        alt="Sun Icon"
-        className="checkbox-icon"
-      />
-    );
-  };
-
   return (
     <div className="settings-container">
       <div className="settings-content">
         <h3>Settings</h3>
-        <div className="setting-area">
-          <label>
-            Color Mode
-          </label>        
-          <label htmlFor="darkModeToggle">
-            <input
-              type="checkbox"
-              id="darkModeToggle"
-              className="darkmode-checkbox"
-              checked={isDarkMode}
-              onChange={handleDarkModeToggle}
-            />
-            <span className="custom-checkbox"></span>
-            <span className="checkbox-icon">{renderModeIcon()}</span>
-          </label>
-        </div>
-        <div className="setting-area">
-          <label>
-            Brinner Day
-          </label>
-          <label htmlFor="dayDropdown">
-          <select
-            id="dayDropdown"
-            value={brinnerDay}
-            onChange={handleDaySelection}
-          >
-            {weekDays.map((weekday, index) => (
-              <option key={index} value={index}>
-                {weekday}
-              </option>
-            ))}
-          </select>
-          </label>
-        </div>
+        <Settings
+          isDarkMode={isDarkMode}
+          toggleTheme={handleThemeToggle}
+          brinnerDay={brinnerDay}
+          daySelection={handleDaySelection}
+        />
         <button className="close-btn" onClick={close}>
           X
         </button>
