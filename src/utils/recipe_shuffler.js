@@ -1,37 +1,54 @@
 import { getRecipeData } from "../services/recipe_data_fetch";
-import { defaultBrinnerIndex, brinnerRecipe } from "../constants";
-import { loadSettings } from "../services/locals_retrieval";
+import { defaultBrinnerIndex, brinnerRecipe, dataKeys } from "../constants";
+import { saveData, loadData } from "../services/locals_retrieval";
 
-const recipeData = await getRecipeData();
+const recipeSheetData = await getRecipeData();
 
-export const retrieveShuffledRecipes = () => {
-  const weekRecipe = [];
+export const retrieveMealSchedule = () => {
+  const mealSchedule = loadData(dataKeys.schedule)
 
-  while (weekRecipe.length < 6) {
-    const randomIndex = Math.floor(Math.random() * recipeData.length);
-    const randomItem = recipeData[randomIndex];
+  if(mealSchedule) {
+    return mealSchedule;
+  } else {
+    const newSchedule = shuffleRecipes();
+    saveData(newSchedule, dataKeys.schedule)
+    return newSchedule;
+  }
+}
 
-    if (!weekRecipe.includes(randomItem)) {
-      weekRecipe.push(randomItem);
-    }
+export const shuffleRecipes = () => {
+  const recipeData = loadData(dataKeys.recipes);
+  let recipeList = recipeData;
+
+  if(!recipeList) {
+    recipeList = [...recipeSheetData];
   }
 
+  const mealSchedule = [];
+
+  while (mealSchedule.length < 6) {
+    if(recipeList.length === 0) {
+      recipeList = [...recipeSheetData];
+    }
+
+    const randomIndex = Math.floor(Math.random() * recipeList.length);
+    const randomItem = recipeList.splice(randomIndex, 1)[0]
+
+    mealSchedule.push(randomItem);
+  }
+
+  saveData(recipeList, dataKeys.recipes);
+
   let brinnerIndex = defaultBrinnerIndex;
-  const storedSettings = loadSettings();
+  const storedSettings = loadData(dataKeys.settings);
   
   if(storedSettings) {
     brinnerIndex = storedSettings.brinnerDay
   }
 
-  weekRecipe.splice(brinnerIndex, 0, brinnerRecipe)
+  mealSchedule.splice(brinnerIndex, 0, brinnerRecipe)
 
-  return weekRecipe;
+  saveData(mealSchedule, dataKeys.schedule);
+
+  return mealSchedule;
 }
-
-// currentData = Pull from sheet <- call once, save in var for access
-// currentWeekSchedule = Pull from local storage
-// unusedRecipes = Pull from local storage
-// clear unusedRecipes of recipes that aren't in currentData
-// pop 6 unusedRecipes for a new weekly schedule
-// if less than 6 left, populate a new unusedRecipes list with all from currentData
-// store new unusedRecipes and new currentWeekSchedule

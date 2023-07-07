@@ -6,8 +6,8 @@ import { TableContainer } from './containers/table_container';
 import { AddRecipeContainer } from './containers/recipe_form_container';
 import { ActionContainer } from './containers/action_container';
 import { SettingsContainer } from './containers/settings_container';
-import { loadSettings } from './services/locals_retrieval';
-import { colorPalette, defaultIsDarkMode } from './constants';
+import { loadData } from './services/locals_retrieval';
+import { colorPalette, defaultIsDarkMode, dataKeys } from './constants';
 
 function App() {
   applyDarkModeSetting()
@@ -37,7 +37,7 @@ function App() {
 export default App;
 
 const applyDarkModeSetting = () => {
-  const settings = loadSettings()
+  const settings = loadData(dataKeys.settings)
   const isDarkMode = (settings && settings.isDarkMode) || (!settings && defaultIsDarkMode)
 
   if(isDarkMode) {

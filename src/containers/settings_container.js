@@ -1,7 +1,7 @@
 import './settings_container.css';
 import { useState, useEffect } from 'react';
-import { weekDays, colorPalette } from '../constants';
-import { saveSettings, loadSettings } from '../services/locals_retrieval';
+import { weekDays, colorPalette, dataKeys } from '../constants';
+import { saveData, loadData } from '../services/locals_retrieval';
 import { defaultBrinnerIndex, defaultIsDarkMode } from '../constants';
 
 export const SettingsContainer = ({ close }) => {
@@ -9,7 +9,7 @@ export const SettingsContainer = ({ close }) => {
   const [brinnerDay, setBrinnerDay] = useState(defaultBrinnerIndex);
 
   useEffect(() => {
-    const storedSettings = loadSettings();
+    const storedSettings = loadData(dataKeys.settings);
     if (storedSettings) {
       setIsDarkMode(storedSettings.isDarkMode);
       setBrinnerDay(storedSettings.brinnerDay);
@@ -23,7 +23,7 @@ export const SettingsContainer = ({ close }) => {
     };
   
     setIsDarkMode(!isDarkMode);
-    saveSettings(updatedSettings);
+    saveData(updatedSettings, dataKeys.settings);
 
     if(updatedSettings.isDarkMode) {
       document.documentElement.style.setProperty(
@@ -51,7 +51,7 @@ export const SettingsContainer = ({ close }) => {
     };
   
     setBrinnerDay(dayIndex);
-    localStorage.setItem('settings', JSON.stringify(updatedSettings));
+    saveData(updatedSettings, dataKeys.settings);
   };
 
   const renderModeIcon = () => {

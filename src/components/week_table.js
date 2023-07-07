@@ -1,14 +1,14 @@
 import './week_table.css';
 import React, { useState, useEffect } from 'react';
 import { weekDays, tableHeaders } from '../constants';
-import { retrieveShuffledRecipes } from '../utils/recipe_shuffler';
+import { retrieveMealSchedule } from '../utils/recipe_shuffler';
 
 export const WeekTable = ({ recipeClick }) => {
   const [recipes, setRecipe] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const recipeData = retrieveShuffledRecipes();
+      const recipeData = retrieveMealSchedule();
       setRecipe(recipeData);
     };
 
