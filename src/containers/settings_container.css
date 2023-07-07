@@ -15,4 +15,76 @@
   background-color: rgb(68, 66, 66);
   border-radius: 5px;
   padding: 20px;
+  position: relative;
+}
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.setting-area {
+  align-items: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.setting-area label {
+  flex-basis: 30%;
+  margin-right: 20px;
+  white-space: nowrap;
+}
+
+.setting-area input,
+.setting-area textarea,
+.setting-area select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-basis: 70%;
+  padding: 8px;
+}
+
+.darkmode-checkbox {
+  display: none;
+}
+
+.custom-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 5px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.custom-checkbox::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.checkbox-icon {
+  height: 20px;
+  position: absolute;
+  pointer-events: none;
+  left: .5px;
+  width: 20px;
+}
+
+.settings-container label {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
