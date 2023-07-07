@@ -11,6 +11,12 @@ export const ActionContainer = ({ setPage, setMealSchedule }) => {
 
   return (
     <div className="action-container">
+      <Button 
+        name='Settings' 
+        icon='settings_icon.svg' 
+        onClick={() => setPage(pages.settings)} 
+        tooltip='Settings' 
+      />
       <Button
         name='Shuffle' 
         icon='shuffle_icon.svg' 
@@ -24,22 +30,16 @@ export const ActionContainer = ({ setPage, setMealSchedule }) => {
         tooltip='Add New Recipe'
       />
       <Button 
-        name='Settings' 
-        icon='settings_icon.svg' 
-        onClick={() => setPage(pages.settings)} 
-        tooltip='Settings' 
+        name='Request Meal' 
+        icon='request_icon.svg' 
+        onClick={() => setPage(pages.recipeRequest)} 
+        tooltip='Request Meal' 
       />
       <Button 
         name='Link' 
         icon='link_icon.svg' 
         onClick={() => window.open(sheetUrl, '_blank')} 
         tooltip='Go To Spreadsheet' 
-      />
-      <Button 
-        name='Request Meal' 
-        icon='request_icon.svg' 
-        onClick={() => setPage(pages.recipeRequest)} 
-        tooltip='Request Meal' 
       />
     </div>
   );
