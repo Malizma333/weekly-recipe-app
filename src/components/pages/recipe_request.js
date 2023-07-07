@@ -48,11 +48,9 @@ export const RecipeRequest = () => {
         <button onClick={handleRequestSubmit}>Add Request</button>
       </div>
       {requestedMeals.length > 0 && (
-        <div>
+        <div className='requested-list'>
+          <label>Requested Meals</label>
           <div>
-            <label>Requested Meals</label>
-          </div>
-          <div className='requested-list'>
             <ul>
               {requestedMeals.map((meal, index) => (
                 <li key={index}>

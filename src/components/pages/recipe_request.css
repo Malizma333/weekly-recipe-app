@@ -21,18 +21,27 @@
   padding: 8px;
 }
 
+.requested-list label {
+  justify-content: center;
+  margin-top: 20px;
+  text-decoration: underline;
+}
+
 .requested-list ul {
   list-style-type: none;
 }
 
 .requested-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 5px;
 }
 
 .requested-list li button {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  flex-basis: 70%;
-  margin-left: 5px;
+  background-color: transparent;
+  border-color: var(--text-color);
+  color: var(--text-color);
+  margin-left: auto;
   padding: 4px;
 }

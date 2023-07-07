@@ -48,3 +48,7 @@
 .allergen-list li button {
   margin-left: 8px;
 }
+
+.allergen-list p {
+  text-decoration: underline;
+}
