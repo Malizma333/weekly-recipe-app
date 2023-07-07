@@ -1,29 +1,28 @@
 import './settings_container.css';
 import { useState, useEffect } from 'react';
 import { weekDays } from '../constants';
+import { saveSettings, loadSettings } from '../services/locals_retrieval';
 
 export const SettingsContainer = ({ close }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [brinnerDay, setBrinnerDay] = useState('Tuesday');
 
   useEffect(() => {
-    const storedSettingsString = localStorage.getItem('settings');
-    if (storedSettingsString) {
-      const storedSettings = JSON.parse(storedSettingsString);
+    const storedSettings = loadSettings();
+    if (storedSettings) {
       setIsDarkMode(storedSettings.isDarkMode);
       setBrinnerDay(storedSettings.brinnerDay);
     }
   }, []);
 
   const handleDarkModeToggle = () => {
-    setIsDarkMode(!isDarkMode);
-
     const updatedSettings = {
       isDarkMode: !isDarkMode,
       brinnerDay,
     };
-
-    localStorage.setItem('settings', JSON.stringify(updatedSettings));
+  
+    setIsDarkMode(!isDarkMode);
+    saveSettings(updatedSettings);
   };
 
   const handleDaySelection = (event) => {
@@ -37,7 +36,7 @@ export const SettingsContainer = ({ close }) => {
     };
 
     setBrinnerDay(day);
-    localStorage.setItem('settings', JSON.stringify(updatedSettings));
+    saveSettings(updatedSettings);
   };
 
   const renderModeIcon = () => {
@@ -62,7 +61,7 @@ export const SettingsContainer = ({ close }) => {
         <h3>Settings</h3>
         <div className="setting-area">
           <label>
-            Dark Modes
+            Dark Mode
           </label>        
           <label htmlFor="darkModeToggle">
             <input
