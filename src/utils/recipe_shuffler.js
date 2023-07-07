@@ -22,6 +22,12 @@ export const shuffleRecipes = () => {
     recipeList = [...recipeSheetData];
   }
 
+  const recipeSheetIds = recipeSheetData.map(recipe => recipe['Recipe Name']);
+  
+  recipeList = recipeList.filter(
+    recipe => recipeSheetIds.includes(recipe['Recipe Name'])
+  );
+
   const mealSchedule = [];
 
   while (mealSchedule.length < 6) {
