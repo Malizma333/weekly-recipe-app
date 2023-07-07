@@ -1,8 +1,6 @@
 import React from 'react';
-import { tableHeaders } from '../../constants';
 
-export const DescriptionInput = ({ recipeData, handleInputChange }) => {
-  const fieldName = tableHeaders.find((header) => header.toLowerCase() === 'description');
+export const DescriptionInput = ({ recipeData, handleInputChange, fieldName }) => {
   return (
     <div className="form-row">
       <label htmlFor="description">Description</label>

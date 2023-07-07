@@ -1,7 +1,7 @@
 import './action_container.css'
 import { Button } from '../components/button';
-import { sheetUrl } from '../constants';
-import { shuffleRecipes } from '../utils/recipe_shuffler';
+import { sheetUrl, pages } from '../constants';
+import { shuffleRecipes } from '../services/recipe_retrieval';
 
 export const ActionContainer = ({ setPage, setMealSchedule }) => {
   const handleShuffleClick = () => {
@@ -11,6 +11,12 @@ export const ActionContainer = ({ setPage, setMealSchedule }) => {
 
   return (
     <div className="action-container">
+      <Button 
+        name='Settings' 
+        icon='settings_icon.svg' 
+        onClick={() => setPage(pages.settings)} 
+        tooltip='Settings' 
+      />
       <Button
         name='Shuffle' 
         icon='shuffle_icon.svg' 
@@ -20,26 +26,20 @@ export const ActionContainer = ({ setPage, setMealSchedule }) => {
       <Button
         name='Add Recipe' 
         icon='add_icon.svg' 
-        onClick={() => setPage('newRecipe')} 
+        onClick={() => setPage(pages.newRecipe)} 
         tooltip='Add New Recipe'
       />
       <Button 
-        name='Settings' 
-        icon='settings_icon.svg' 
-        onClick={() => setPage('settings')} 
-        tooltip='Settings' 
+        name='Request Meal' 
+        icon='request_icon.svg' 
+        onClick={() => setPage(pages.recipeRequest)} 
+        tooltip='Request Meal' 
       />
       <Button 
         name='Link' 
         icon='link_icon.svg' 
         onClick={() => window.open(sheetUrl, '_blank')} 
         tooltip='Go To Spreadsheet' 
-      />
-      <Button 
-        name='Request Meal' 
-        icon='request_icon.svg' 
-        onClick={() => setPage('mealRequest')} 
-        tooltip='Request Meal' 
       />
     </div>
   );

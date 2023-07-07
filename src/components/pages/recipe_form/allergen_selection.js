@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const SelectedAllergensList = ({ selectedAllergens, handleAllergenRemove }) => {
   const allergensArray = selectedAllergens.split(",")
     .map((allergen) => allergen.trim())
@@ -11,7 +9,7 @@ export const SelectedAllergensList = ({ selectedAllergens, handleAllergenRemove 
 
   return (
     <div className="allergen-list">
-      <p style={{ textDecoration: 'underline' }}>Selected Allergens</p>
+      <p>Selected Allergens</p>
       <ul>
         {allergensArray.map((allergen) => (
           <li key={allergen}>

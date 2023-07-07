@@ -9,29 +9,27 @@ import { SelectedAllergensList } from './recipe_form/allergen_selection';
 import { PrepareTimeInput } from './recipe_form/prepare_time';
 import { FormButtons } from './recipe_form/form_buttons';
 
-import { writeRecipeDataToCSV } from '../services/recipe_data_write';
-import { tableHeaders } from '../constants';
+import { writeRecipeDataToCSV } from '../../services/recipe_data_write';
+import { tableHeaders, allergenOptions } from '../../constants';
 import isURL from 'validator/lib/isURL';
 
 export const RecipeForm = ({ closeForm }) => {
-  const recipeTemplate = tableHeaders.reduce((acc, header) => {
-    acc[header] = '';
-    return acc;
-  }, {});
+  const recipeTemplate = {};
+
+  for (const key in tableHeaders) {
+    recipeTemplate[tableHeaders[key]] = '';
+  }
 
   const [recipeData, setRecipeData] = useState(recipeTemplate);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const fieldName = tableHeaders.find(header => header.toLowerCase() === name.toLowerCase());
-    if (fieldName) {
-      setRecipeData((prevData) => ({ ...prevData, [fieldName]: value }));
-    }
+    setRecipeData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleAllergenSelect = (e) => {
     const selectedAllergen = e.target.options[e.target.selectedIndex];
-    const fieldName = tableHeaders.find((header) => header.toLowerCase() === 'allergens');
+    const fieldName = tableHeaders.allergens
   
     if (selectedAllergen.value === '') return;
     if (recipeData[fieldName].includes(selectedAllergen.text)) return;
@@ -44,7 +42,7 @@ export const RecipeForm = ({ closeForm }) => {
   };
   
   const handleAllergenRemove = (allergen) => {
-    const fieldName = tableHeaders.find((header) => header.toLowerCase() === 'allergens');
+    const fieldName = tableHeaders.allergens
     const updatedAllergens = recipeData[fieldName]
       .split(',')
       .filter((selected) => selected.trim() !== allergen.trim())
@@ -57,11 +55,10 @@ export const RecipeForm = ({ closeForm }) => {
     e.preventDefault();
 
     const isValidRecipeLink = 
-      recipeData[tableHeaders[3]].trim() === '' ||
-      isURL(recipeData[tableHeaders[3]]);
+      recipeData[tableHeaders.link].trim() === '' ||
+      isURL(recipeData[tableHeaders.link]);
 
     if (!isValidRecipeLink) {
-      console.log('Invalid recipe link');
       return;
     }
 
@@ -75,29 +72,42 @@ export const RecipeForm = ({ closeForm }) => {
     closeForm();
   };
 
-  const allergenOptions = [
-    { value: '', label: 'Select Allergen' },
-    { value: 'peanuts', label: 'Peanuts' },
-    { value: 'treeNuts', label: 'Tree Nuts' },
-    { value: 'milk', label: 'Milk' },
-  ];
-
   return (
     <div className="recipe-form-container">
       <form onSubmit={handleFormSubmit}>
-        <NameInput recipeData={recipeData} handleInputChange={handleInputChange} />
-        <DescriptionInput recipeData={recipeData} handleInputChange={handleInputChange} />
-        <RecipeLinkInput recipeData={recipeData} handleInputChange={handleInputChange} />
+        <NameInput
+          fieldName={tableHeaders.name}
+          recipeData={recipeData}
+          handleInputChange={handleInputChange}
+        />
+        <DescriptionInput
+          fieldName={tableHeaders.desc}
+          recipeData={recipeData}
+          handleInputChange={handleInputChange}
+        />
         <AllergenDropdown
-          handleAllergenSelect={handleAllergenSelect}
+          fieldName={tableHeaders.allergens}
           allergenOptions={allergenOptions}
+          handleAllergenSelect={handleAllergenSelect}
         />
         <SelectedAllergensList
-          selectedAllergens={recipeData[tableHeaders[2]]}
+          selectedAllergens={recipeData[tableHeaders.allergens]}
           handleAllergenRemove={handleAllergenRemove}
         />
-        <PrepareTimeInput recipeData={recipeData} handleInputChange={handleInputChange} />
-        <FormButtons handleFormSubmit={handleFormSubmit} handleFormCancel={handleFormCancel} />
+        <RecipeLinkInput
+          fieldName={tableHeaders.link}
+          recipeData={recipeData}
+          handleInputChange={handleInputChange} 
+        />
+        <PrepareTimeInput
+          recipeData={recipeData}
+          handleInputChange={handleInputChange}
+          fieldName={tableHeaders.time}
+        />
+        <FormButtons
+          handleFormSubmit={handleFormSubmit}
+          handleFormCancel={handleFormCancel}
+        />
       </form>
     </div>
   );

@@ -1,9 +1,6 @@
 import React from 'react';
-import { tableHeaders } from '../../constants';
 
-export const AllergenDropdown = ({ handleAllergenSelect, allergenOptions }) => {
-  const fieldName = tableHeaders.find((header) => header.toLowerCase() === 'allergens');
-  
+export const AllergenDropdown = ({ handleAllergenSelect, allergenOptions, fieldName }) => {  
   return (
     <div className='form-row'>
       <label htmlFor={fieldName}>{fieldName}</label>

@@ -1,10 +1,10 @@
-export const tableHeaders = [
-  'Recipe Name',
-  'Description',
-  'Allergens',
-  'Instructions',
-  'Prepare Time'
-]
+export const tableHeaders = {
+  name: 'Recipe Name',
+  desc: 'Description',
+  allergens: 'Allergens',
+  link: 'Instructions',
+  time: 'Prepare Time'
+}
 
 export const weekDays = [
   'Sunday',
@@ -41,5 +41,19 @@ export const sheetUrl = 'https://docs.google.com/spreadsheets/d/1BvP288-jAhBKLgc
 export const dataKeys = {
   settings: 'settings',
   schedule: 'schedule',
-  recipes: 'recipes'
+  recipes: 'recipes',
+  requests: 'recipe_requests'
 }
+
+export const pages = {
+  newRecipe: 'newRecipe',
+  settings: 'settings',
+  recipeRequest: 'recipeRequest'
+}
+
+export const allergenOptions = [
+  { value: '', label: 'Select Allergen' },
+  { value: 'peanuts', label: 'Peanuts' },
+  { value: 'treeNuts', label: 'Tree Nuts' },
+  { value: 'milk', label: 'Milk' },
+];

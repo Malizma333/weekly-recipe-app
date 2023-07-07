@@ -5,12 +5,12 @@ export const RecipeDetails = ({ selectedRecipe }) => {
   return (
     <div className='recipe-details'>
       <div className='header-container'>
-        <h3>{selectedRecipe[tableHeaders[0]]}</h3>
-        <DurationContainer duration={ selectedRecipe[tableHeaders[4]] } />
+        <h3>{selectedRecipe[tableHeaders.name]}</h3>
+        <DurationContainer duration={ selectedRecipe[tableHeaders.time] } />
       </div>
-      <p>{selectedRecipe[tableHeaders[1]]}</p>
-      <AllergensList allergensString={ selectedRecipe[tableHeaders[2]] } />
-      <RecipeLink link={ selectedRecipe[tableHeaders[3]] } />
+      <p>{selectedRecipe[tableHeaders.desc]}</p>
+      <AllergensList allergensString={ selectedRecipe[tableHeaders.allergens] } />
+      <RecipeLink link={ selectedRecipe[tableHeaders.link] } />
     </div>
   )
 }

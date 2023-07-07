@@ -1,5 +1,5 @@
 import './table_container.css';
-import { WeekTable } from '../components/week_table.js';
+import { WeekTable } from '../components/week_table';
 
 export const TableContainer = ({ setRecipe, mealSchedule, setMealSchedule }) => {
   return (
