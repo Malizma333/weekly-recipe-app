@@ -6,17 +6,14 @@ import { TableContainer } from './containers/table_container';
 import { AddRecipeContainer } from './containers/recipe_form_container';
 import { ActionContainer } from './containers/action_container';
 import { SettingsContainer } from './containers/settings_container';
-import { loadSettings } from './services/locals_retrieval';
-import { colorPalette, defaultIsDarkMode } from './constants';
+import { loadData } from './services/locals_retrieval';
+import { colorPalette, defaultIsDarkMode, dataKeys } from './constants';
 
 function App() {
   applyDarkModeSetting()
 
+  const [mealSchedule, setMealSchedule] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-
-  const handleRecipeClick = (recipe) => {
-    setSelectedRecipe(recipe);
-  };
 
   const [visiblePage, setPage] = useState('None');
   const closePage = () => setPage('None');
@@ -24,9 +21,18 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <ActionContainer setPage={setPage} />
-        <TableContainer recipeClick={handleRecipeClick} />
-        <DetailContainer selectedRecipe={selectedRecipe} />
+        <ActionContainer
+          setPage={setPage}
+          setMealSchedule={setMealSchedule}
+        />
+        <TableContainer
+          setRecipe={setSelectedRecipe}
+          mealSchedule={ mealSchedule }
+          setMealSchedule={ setMealSchedule }
+        />
+        <DetailContainer
+          selectedRecipe={selectedRecipe}
+        />
         {visiblePage === 'newRecipe' && <AddRecipeContainer close={closePage}/>}
         {visiblePage === 'settings' && <SettingsContainer close={closePage}/>}
       </header>
@@ -37,7 +43,7 @@ function App() {
 export default App;
 
 const applyDarkModeSetting = () => {
-  const settings = loadSettings()
+  const settings = loadData(dataKeys.settings)
   const isDarkMode = (settings && settings.isDarkMode) || (!settings && defaultIsDarkMode)
 
   if(isDarkMode) {

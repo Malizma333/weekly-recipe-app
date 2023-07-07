@@ -1,12 +1,12 @@
-export function saveSettings(settings) {
-  const settingsString = JSON.stringify(settings);
-  localStorage.setItem('settings', settingsString);
+export function saveData(data, key) {
+  const dataString = JSON.stringify(data);
+  localStorage.setItem(key, dataString);
 }
 
-export function loadSettings() {
-  const storedSettingsString = localStorage.getItem('settings');
-  if (storedSettingsString) {
-    return JSON.parse(storedSettingsString);
+export function loadData(key) {
+  const storedDataString = localStorage.getItem(key);
+  if (storedDataString) {
+    return JSON.parse(storedDataString);
   }
   return null;
 }

@@ -1,10 +1,14 @@
 import './table_container.css';
 import { WeekTable } from '../components/week_table.js';
 
-export const TableContainer = ({ recipeClick }) => {
+export const TableContainer = ({ setRecipe, mealSchedule, setMealSchedule }) => {
   return (
     <div className="table-container">
-      <WeekTable recipeClick={ recipeClick} />
+      <WeekTable
+        setRecipe={ setRecipe }
+        mealSchedule={ mealSchedule }
+        setMealSchedule={ setMealSchedule }
+      />
     </div>
   );
 }
