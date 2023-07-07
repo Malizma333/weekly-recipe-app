@@ -2,10 +2,11 @@ import './settings_container.css';
 import { useState, useEffect } from 'react';
 import { weekDays } from '../constants';
 import { saveSettings, loadSettings } from '../services/locals_retrieval';
+import { defaultBrinnerIndex } from '../constants';
 
 export const SettingsContainer = ({ close }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [brinnerDay, setBrinnerDay] = useState('Tuesday');
+  const [brinnerDay, setBrinnerDay] = useState(defaultBrinnerIndex);
 
   useEffect(() => {
     const storedSettings = loadSettings();
@@ -26,17 +27,15 @@ export const SettingsContainer = ({ close }) => {
   };
 
   const handleDaySelection = (event) => {
-    const day = event.target.value;
-
-    if (day === '') return;
-
+    const dayIndex = event.target.selectedIndex;
+  
     const updatedSettings = {
       isDarkMode,
-      brinnerDay: day,
+      brinnerDay: dayIndex,
     };
-
-    setBrinnerDay(day);
-    saveSettings(updatedSettings);
+  
+    setBrinnerDay(dayIndex);
+    localStorage.setItem('settings', JSON.stringify(updatedSettings));
   };
 
   const renderModeIcon = () => {
@@ -80,17 +79,17 @@ export const SettingsContainer = ({ close }) => {
             Brinner Day
           </label>
           <label htmlFor="dayDropdown">
-            <select
-              id="dayDropdown"
-              value={brinnerDay}
-              onChange={handleDaySelection}
-            >
-              {weekDays.map((weekday, index) => (
-                <option key={index} value={weekday}>
-                  {weekday}
-                </option>
-              ))}
-            </select>
+          <select
+            id="dayDropdown"
+            value={brinnerDay}
+            onChange={handleDaySelection}
+          >
+            {weekDays.map((weekday, index) => (
+              <option key={index} value={index}>
+                {weekday}
+              </option>
+            ))}
+          </select>
           </label>
         </div>
         <button className="close-btn" onClick={close}>

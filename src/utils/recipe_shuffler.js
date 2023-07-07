@@ -1,5 +1,6 @@
 import { getRecipeData } from "../services/recipe_data_fetch";
-import { brinnerIndex, brinnerRecipe } from "../constants";
+import { defaultBrinnerIndex, brinnerRecipe } from "../constants";
+import { loadSettings } from "../services/locals_retrieval";
 
 const recipeData = await getRecipeData();
 
@@ -13,6 +14,13 @@ export const retrieveShuffledRecipes = () => {
     if (!weekRecipe.includes(randomItem)) {
       weekRecipe.push(randomItem);
     }
+  }
+
+  let brinnerIndex = defaultBrinnerIndex;
+  const storedSettings = loadSettings();
+  
+  if(storedSettings) {
+    brinnerIndex = storedSettings.brinnerDay
   }
 
   weekRecipe.splice(brinnerIndex, 0, brinnerRecipe)

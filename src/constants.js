@@ -16,7 +16,7 @@ export const weekDays = [
   'Saturday'
 ]
 
-export const brinnerIndex = 2
+export const defaultBrinnerIndex = 2
 
 export const brinnerRecipe = {
   'Recipe Name': "Brinner",
