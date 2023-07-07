@@ -1,5 +1,5 @@
 import './recipe_request.css';
-import { recipeSheetData } from '../../utils/recipe_shuffler';
+import { recipeSheetData } from '../../services/recipe_retrieval';
 import { tableHeaders } from '../../constants';
 
 export const RecipeRequest = ({
@@ -20,7 +20,9 @@ export const RecipeRequest = ({
             <option
               key={index}
               value={mealData[tableHeaders.name]}
-              disabled={requestedMeals.includes(mealData[tableHeaders.name])}
+              disabled={requestedMeals.some(
+                recipe => recipe[tableHeaders.name] === mealData[tableHeaders.name]
+              )}
             >
               {mealData[tableHeaders.name]}
             </option>
@@ -33,9 +35,9 @@ export const RecipeRequest = ({
           <label>Requested Meals</label>
           <div>
             <ul>
-              {requestedMeals.map((meal, index) => (
+              {requestedMeals.map((mealData, index) => (
                 <li key={index}>
-                  {meal}
+                  {mealData[tableHeaders.name]}
                   <button onClick={() => removeRequest(index)}>X</button>
                 </li>
               ))}

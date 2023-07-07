@@ -3,16 +3,15 @@ import { useState, useEffect } from 'react';
 
 import { RecipeRequest } from '../components/pages/recipe_request';
 import { loadData, saveData } from '../services/locals_retrieval';
-import { dataKeys } from '../constants';
+import { dataKeys, tableHeaders } from '../constants';
+import { recipeSheetData } from '../services/recipe_retrieval';
 
 export const RecipeRequestContainer = ({ close }) => {
   const [selectedRequest, setSelectedRequest] = useState('');
   const [requestedMeals, setRequestedMeals] = useState([]);
   
   useEffect(() => {
-    console.log(dataKeys.requests);
     const storedRequests = loadData(dataKeys.requests);
-    console.log(storedRequests);
     if (storedRequests) {
       setRequestedMeals(storedRequests);
     }
@@ -29,12 +28,15 @@ export const RecipeRequestContainer = ({ close }) => {
       return
     }
 
+    const requestData = recipeSheetData.find(
+      recipe => recipe[tableHeaders.name] === selectedRequest
+    );
     let newRequestedMeals = null;
 
     if(!requestedMeals) {
-      newRequestedMeals = [selectedRequest]
+      newRequestedMeals = [requestData]
     } else {
-      newRequestedMeals = [...requestedMeals, selectedRequest]
+      newRequestedMeals = [...requestedMeals, requestData]
     }
 
     setRequestedMeals(newRequestedMeals)

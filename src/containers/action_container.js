@@ -1,7 +1,7 @@
 import './action_container.css'
 import { Button } from '../components/button';
 import { sheetUrl, pages } from '../constants';
-import { shuffleRecipes } from '../utils/recipe_shuffler';
+import { shuffleRecipes } from '../services/recipe_retrieval';
 
 export const ActionContainer = ({ setPage, setMealSchedule }) => {
   const handleShuffleClick = () => {

@@ -1,7 +1,7 @@
 import './week_table.css';
 import { useEffect } from 'react';
 import { weekDays, tableHeaders } from '../constants';
-import { retrieveMealSchedule } from '../utils/recipe_shuffler';
+import { retrieveMealSchedule } from '../services/recipe_retrieval';
 
 export const WeekTable = ({ setRecipe, mealSchedule, setMealSchedule }) => {
   const handleRecipeClick = (recipe) => {
