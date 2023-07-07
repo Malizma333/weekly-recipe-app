@@ -1,19 +1,17 @@
 import './week_table.css';
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { weekDays, tableHeaders } from '../constants';
 import { retrieveMealSchedule } from '../utils/recipe_shuffler';
 
-export const WeekTable = ({ recipeClick }) => {
-  const [recipes, setRecipe] = useState([]);
+export const WeekTable = ({ setRecipe, mealSchedule, setMealSchedule }) => {
+  const handleRecipeClick = (recipe) => {
+    setRecipe(recipe);
+  };
 
   useEffect(() => {
-    const getData = async () => {
-      const recipeData = retrieveMealSchedule();
-      setRecipe(recipeData);
-    };
-
-    getData();
-  }, []);
+    const updatedMealSchedule = retrieveMealSchedule();
+    setMealSchedule(updatedMealSchedule);
+  }, [setMealSchedule]);
 
   return (
     <table className='week-table'>
@@ -26,11 +24,11 @@ export const WeekTable = ({ recipeClick }) => {
       </thead>
       <tbody>
         <tr>
-          {recipes.map((recipe, index) => (
+          {mealSchedule.map((recipe, index) => (
             <td
               className='recipe-name-text'
               key={index}
-              onClick={() => recipeClick(recipe)}
+              onClick={() => handleRecipeClick(recipe)}
             >
               {recipe[tableHeaders[0]]}
             </td>

@@ -12,11 +12,8 @@ import { colorPalette, defaultIsDarkMode, dataKeys } from './constants';
 function App() {
   applyDarkModeSetting()
 
+  const [mealSchedule, setMealSchedule] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-
-  const handleRecipeClick = (recipe) => {
-    setSelectedRecipe(recipe);
-  };
 
   const [visiblePage, setPage] = useState('None');
   const closePage = () => setPage('None');
@@ -24,9 +21,18 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <ActionContainer setPage={setPage} />
-        <TableContainer recipeClick={handleRecipeClick} />
-        <DetailContainer selectedRecipe={selectedRecipe} />
+        <ActionContainer
+          setPage={setPage}
+          setMealSchedule={setMealSchedule}
+        />
+        <TableContainer
+          setRecipe={setSelectedRecipe}
+          mealSchedule={ mealSchedule }
+          setMealSchedule={ setMealSchedule }
+        />
+        <DetailContainer
+          selectedRecipe={selectedRecipe}
+        />
         {visiblePage === 'newRecipe' && <AddRecipeContainer close={closePage}/>}
         {visiblePage === 'settings' && <SettingsContainer close={closePage}/>}
       </header>

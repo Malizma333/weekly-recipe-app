@@ -1,17 +1,20 @@
 import './action_container.css'
 import { Button } from '../components/button';
 import { sheetUrl } from '../constants';
+import { shuffleRecipes } from '../utils/recipe_shuffler';
 
-export const ActionContainer = ({ setPage }) => {
-  const onShuffle = () => console.log("Shuffling");
-  const onLink = () => window.open(sheetUrl, '_blank');
+export const ActionContainer = ({ setPage, setMealSchedule }) => {
+  const handleShuffleClick = () => {
+    const updatedMealSchedule = shuffleRecipes();
+    setMealSchedule(updatedMealSchedule);
+  }
 
   return (
     <div className="action-container">
       <Button
         name='Shuffle' 
         icon='shuffle_icon.svg' 
-        onClick={onShuffle} 
+        onClick={handleShuffleClick} 
         tooltip='Shuffle Recipes'
       />
       <Button
@@ -29,7 +32,7 @@ export const ActionContainer = ({ setPage }) => {
       <Button 
         name='Link' 
         icon='link_icon.svg' 
-        onClick={onLink} 
+        onClick={() => window.open(sheetUrl, '_blank')} 
         tooltip='Go To Spreadsheet' 
       />
       <Button 
