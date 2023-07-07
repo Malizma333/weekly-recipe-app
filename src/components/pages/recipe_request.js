@@ -1,37 +1,18 @@
 import './recipe_request.css';
-import { useState } from 'react';
 import { recipeSheetData } from '../../utils/recipe_shuffler';
 import { tableHeaders } from '../../constants';
 
-export const RecipeRequest = () => {
-  const [selectedRequest, setSelectedRequest] = useState('');
-  const [requestedMeals, setRequestedMeals] = useState([]);
-
-  const handleRequestChange = (event) => {
-    setSelectedRequest(event.target.value);
-  };
-
-  const handleRequestSubmit = (event) => {
-    event.preventDefault();
-    if (selectedRequest && !requestedMeals.includes(selectedRequest)) {
-      setRequestedMeals([...requestedMeals, selectedRequest]);
-      setSelectedRequest('');
-    }
-  };
-
-  const handleRemoveRequest = (index) => {
-    const updatedMeals = [...requestedMeals];
-    updatedMeals.splice(index, 1);
-    setRequestedMeals(updatedMeals);
-  };
-
+export const RecipeRequest = ({
+  selectedRequest, requestedMeals,
+  requestChange, requestSubmit, removeRequest
+}) => {
   return (
     <div>
       <div className="request-area">
         <label>Choose Request</label>
         <select
           value={selectedRequest}
-          onChange={handleRequestChange}
+          onChange={requestChange}
           disabled={requestedMeals.length >= 6}
         >
           <option value=''>Select Meal</option>
@@ -45,7 +26,7 @@ export const RecipeRequest = () => {
             </option>
           ))}
         </select>
-        <button onClick={handleRequestSubmit}>Add Request</button>
+        <button onClick={requestSubmit}>Add Request</button>
       </div>
       {requestedMeals.length > 0 && (
         <div className='requested-list'>
@@ -55,7 +36,7 @@ export const RecipeRequest = () => {
               {requestedMeals.map((meal, index) => (
                 <li key={index}>
                   {meal}
-                  <button onClick={() => handleRemoveRequest(index)}>X</button>
+                  <button onClick={() => removeRequest(index)}>X</button>
                 </li>
               ))}
             </ul>

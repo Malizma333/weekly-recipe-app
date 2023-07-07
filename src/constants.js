@@ -41,7 +41,8 @@ export const sheetUrl = 'https://docs.google.com/spreadsheets/d/1BvP288-jAhBKLgc
 export const dataKeys = {
   settings: 'settings',
   schedule: 'schedule',
-  recipes: 'recipes'
+  recipes: 'recipes',
+  requests: 'recipe_requests'
 }
 
 export const pages = {
