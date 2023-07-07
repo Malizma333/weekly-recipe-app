@@ -1,6 +1,6 @@
 import './action_container.css'
 import { Button } from '../components/button';
-import { sheetUrl } from '../constants';
+import { sheetUrl, pages } from '../constants';
 import { shuffleRecipes } from '../utils/recipe_shuffler';
 
 export const ActionContainer = ({ setPage, setMealSchedule }) => {
@@ -20,13 +20,13 @@ export const ActionContainer = ({ setPage, setMealSchedule }) => {
       <Button
         name='Add Recipe' 
         icon='add_icon.svg' 
-        onClick={() => setPage('newRecipe')} 
+        onClick={() => setPage(pages.newRecipe)} 
         tooltip='Add New Recipe'
       />
       <Button 
         name='Settings' 
         icon='settings_icon.svg' 
-        onClick={() => setPage('settings')} 
+        onClick={() => setPage(pages.settings)} 
         tooltip='Settings' 
       />
       <Button 
@@ -38,7 +38,7 @@ export const ActionContainer = ({ setPage, setMealSchedule }) => {
       <Button 
         name='Request Meal' 
         icon='request_icon.svg' 
-        onClick={() => setPage('mealRequest')} 
+        onClick={() => setPage(pages.recipeRequest)} 
         tooltip='Request Meal' 
       />
     </div>

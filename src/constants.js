@@ -43,3 +43,9 @@ export const dataKeys = {
   schedule: 'schedule',
   recipes: 'recipes'
 }
+
+export const pages = {
+  newRecipe: 'newRecipe',
+  settings: 'settings',
+  recipeRequest: 'recipeRequest'
+}
