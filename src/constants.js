@@ -16,8 +16,17 @@ export const weekDays = [
   'Saturday'
 ]
 
-export const defaultBrinnerIndex = 2
+export const defaultIsDarkMode = true
+export const colorPalette = {
+  primaryColorDark: '#12131c',
+  secondaryColorDark: '#222533',
+  textColorDark: '#e8e8e8',
+  primaryColorLight: '#e6d6ba',
+  secondaryColorLight: '#dbd2c1',
+  textColorLight: '#1f1f1f'
+}
 
+export const defaultBrinnerIndex = 2
 export const brinnerRecipe = {
   'Recipe Name': "Brinner",
   'Description': "Breakfast for dinner",

@@ -1,11 +1,11 @@
 import './settings_container.css';
 import { useState, useEffect } from 'react';
-import { weekDays } from '../constants';
+import { weekDays, colorPalette } from '../constants';
 import { saveSettings, loadSettings } from '../services/locals_retrieval';
-import { defaultBrinnerIndex } from '../constants';
+import { defaultBrinnerIndex, defaultIsDarkMode } from '../constants';
 
 export const SettingsContainer = ({ close }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(defaultIsDarkMode);
   const [brinnerDay, setBrinnerDay] = useState(defaultBrinnerIndex);
 
   useEffect(() => {
@@ -24,6 +24,22 @@ export const SettingsContainer = ({ close }) => {
   
     setIsDarkMode(!isDarkMode);
     saveSettings(updatedSettings);
+
+    if(updatedSettings.isDarkMode) {
+      document.documentElement.style.setProperty(
+        '--primary-color', colorPalette.primaryColorDark);
+      document.documentElement.style.setProperty(
+        '--secondary-color', colorPalette.secondaryColorDark);
+      document.documentElement.style.setProperty(
+        '--text-color', colorPalette.textColorDark);
+    } else {
+      document.documentElement.style.setProperty(
+        '--primary-color', colorPalette.primaryColorLight);
+      document.documentElement.style.setProperty(
+        '--secondary-color', colorPalette.secondaryColorLight);
+      document.documentElement.style.setProperty(
+        '--text-color', colorPalette.textColorLight);
+    }
   };
 
   const handleDaySelection = (event) => {
