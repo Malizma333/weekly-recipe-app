@@ -1,21 +1,27 @@
-
-.recipe-request-area {
+.request-area {
   align-items: center;
   display: flex;
-  margin-top: 20px;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-.recipe-request-area label {
+.request-area label {
   flex-basis: 30%;
   margin-right: 20px;
   white-space: nowrap;
 }
 
-.recipe-request-area input,
-.recipe-request-area textarea,
-.recipe-request-area select {
+.request-area input,
+.request-area textarea,
+.request-area select,
+.request-area button {
   border: 1px solid #ccc;
   border-radius: 4px;
   flex-basis: 70%;
+  margin-right: 5px;
   padding: 8px;
+}
+
+.request-area li button {
+  margin-left: 10px;
 }

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const SelectedAllergensList = ({ selectedAllergens, handleAllergenRemove }) => {
   const allergensArray = selectedAllergens.split(",")
     .map((allergen) => allergen.trim())
