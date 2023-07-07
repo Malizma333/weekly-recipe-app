@@ -11,8 +11,8 @@
   z-index: 20;
 }
 
-.content {
-  background-color: rgb(68, 66, 66);
+.add-recipe-content {
+  background-color: var(--secondary-color);
   border-radius: 5px;
   padding: 20px;
 }

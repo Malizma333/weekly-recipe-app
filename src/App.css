@@ -4,8 +4,8 @@
 
 .App-header {
   align-items: center;
-  background-color: #282c34;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);

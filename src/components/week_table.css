@@ -6,7 +6,7 @@
 
 .week-table th,
 .week-table td {
-  border: 2px solid white;
+  border: 2px solid var(--text-color);
   padding: 8px;
   width: 10em;
 }

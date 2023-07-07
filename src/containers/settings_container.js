@@ -72,11 +72,11 @@ export const SettingsContainer = ({ close }) => {
 
   return (
     <div className="settings-container">
-      <div className="content">
+      <div className="settings-content">
         <h3>Settings</h3>
         <div className="setting-area">
           <label>
-            Dark Mode
+            Color Mode
           </label>        
           <label htmlFor="darkModeToggle">
             <input
