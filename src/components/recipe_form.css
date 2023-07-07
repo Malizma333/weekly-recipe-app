@@ -20,7 +20,7 @@
 .recipe-form-container input,
 .recipe-form-container textarea,
 .recipe-form-container select {
-  border: 1px solid #ccc;
+  border: 1px solid var(--text-color);
   border-radius: 4px;
   flex-basis: 70%;
   margin: 6px;
@@ -29,6 +29,7 @@
 
 .recipe-form-container button[type="submit"],
 .recipe-form-container button[type="button"] {
+  border: 1px solid var(--text-color);
   flex-basis: 100%;
   font-weight: bold;
   margin: 10px;

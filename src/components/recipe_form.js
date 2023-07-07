@@ -13,7 +13,7 @@ import { writeRecipeDataToCSV } from '../services/recipe_data_write';
 import { tableHeaders } from '../constants';
 import isURL from 'validator/lib/isURL';
 
-export const RecipeForm = ({ setDivVisible }) => {
+export const RecipeForm = ({ closeForm }) => {
   const recipeTemplate = tableHeaders.reduce((acc, header) => {
     acc[header] = '';
     return acc;
@@ -67,12 +67,12 @@ export const RecipeForm = ({ setDivVisible }) => {
 
     writeRecipeDataToCSV(recipeData);
     setRecipeData(recipeTemplate);
-    setDivVisible(false);
+    closeForm();
   };
 
   const handleFormCancel = () => {
     setRecipeData(recipeTemplate);
-    setDivVisible(false);
+    closeForm();
   };
 
   const allergenOptions = [
