@@ -1,13 +1,29 @@
 import './settings_container.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { weekDays } from '../constants';
 
 export const SettingsContainer = ({ close }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [brinnerDay, setBrinnerDay] = useState('');
+  const [brinnerDay, setBrinnerDay] = useState('Tuesday');
+
+  useEffect(() => {
+    const storedSettingsString = localStorage.getItem('settings');
+    if (storedSettingsString) {
+      const storedSettings = JSON.parse(storedSettingsString);
+      setIsDarkMode(storedSettings.isDarkMode);
+      setBrinnerDay(storedSettings.brinnerDay);
+    }
+  }, []);
 
   const handleDarkModeToggle = () => {
     setIsDarkMode(!isDarkMode);
+
+    const updatedSettings = {
+      isDarkMode: !isDarkMode,
+      brinnerDay,
+    };
+
+    localStorage.setItem('settings', JSON.stringify(updatedSettings));
   };
 
   const handleDaySelection = (event) => {
@@ -15,7 +31,13 @@ export const SettingsContainer = ({ close }) => {
 
     if (day === '') return;
 
-    setBrinnerDay(event.target.value);
+    const updatedSettings = {
+      isDarkMode,
+      brinnerDay: day,
+    };
+
+    setBrinnerDay(day);
+    localStorage.setItem('settings', JSON.stringify(updatedSettings));
   };
 
   const renderModeIcon = () => {
