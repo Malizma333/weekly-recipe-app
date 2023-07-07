@@ -1,5 +1,7 @@
 import './recipe_request.css';
 import { useState } from 'react';
+import { recipeSheetData } from '../../utils/recipe_shuffler';
+import { tableHeaders } from '../../constants';
 
 export const RecipeRequest = () => {
   const [selectedRequest, setSelectedRequest] = useState('');
@@ -26,33 +28,31 @@ export const RecipeRequest = () => {
   return (
     <div>
       <div className="request-area">
-        <label>
-          Choose Request
-        </label>
+        <label>Choose Request</label>
         <select
-            value={selectedRequest}
-            onChange={handleRequestChange}
-          >
-            <option value="">Select an option</option>
-            <option value="Meal 1">Meal 1</option>
-            <option value="Meal 2">Meal 2</option>
-            <option 
-              value="Meal 3" 
-              disabled={requestedMeals.includes("Meal 3")}
+          value={selectedRequest}
+          onChange={handleRequestChange}
+          disabled={requestedMeals.length >= 6}
+        >
+          <option value=''>Select Meal</option>
+          {recipeSheetData.map((mealData, index) => (
+            <option
+              key={index}
+              value={mealData[tableHeaders.name]}
+              disabled={requestedMeals.includes(mealData[tableHeaders.name])}
             >
-              Meal 3
+              {mealData[tableHeaders.name]}
             </option>
-          </select>
-          <button onClick={handleRequestSubmit}>Add Request</button>
+          ))}
+        </select>
+        <button onClick={handleRequestSubmit}>Add Request</button>
       </div>
       {requestedMeals.length > 0 && (
         <div>
-          <div className="request-area">
-            <label>
-              Requested Meals
-            </label>
+          <div>
+            <label>Requested Meals</label>
           </div>
-          <div className='request-area'>
+          <div className='requested-list'>
             <ul>
               {requestedMeals.map((meal, index) => (
                 <li key={index}>

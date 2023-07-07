@@ -2,7 +2,7 @@ import { getRecipeData } from "../services/recipe_data_fetch";
 import { defaultBrinnerIndex, brinnerRecipe, dataKeys } from "../constants";
 import { saveData, loadData } from "../services/locals_retrieval";
 
-const recipeSheetData = await getRecipeData();
+export const recipeSheetData = await getRecipeData();
 
 export const retrieveMealSchedule = () => {
   const mealSchedule = loadData(dataKeys.schedule);

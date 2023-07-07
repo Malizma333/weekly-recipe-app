@@ -1,7 +1,6 @@
 .request-area {
   align-items: center;
   display: flex;
-  justify-content: center;
   margin-top: 10px;
 }
 
@@ -22,6 +21,18 @@
   padding: 8px;
 }
 
-.request-area li button {
-  margin-left: 10px;
+.requested-list ul {
+  list-style-type: none;
+}
+
+.requested-list li {
+  margin-bottom: 5px;
+}
+
+.requested-list li button {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-basis: 70%;
+  margin-left: 5px;
+  padding: 4px;
 }
