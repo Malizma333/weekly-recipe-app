@@ -11,6 +11,12 @@
   z-index: 20;
 }
 
+.recipe-request-container label {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
 .recipe-request-content {
   background-color: var(--secondary-color);
   border-radius: 5px;
@@ -27,31 +33,4 @@
   position: absolute;
   right: 0;
   top: 0;
-}
-
-.recipe-request-area {
-  align-items: center;
-  display: flex;
-  margin-top: 20px;
-}
-
-.recipe-request-area label {
-  flex-basis: 30%;
-  margin-right: 20px;
-  white-space: nowrap;
-}
-
-.recipe-request-area input,
-.recipe-request-area textarea,
-.recipe-request-area select {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  flex-basis: 70%;
-  padding: 8px;
-}
-
-.recipe-request-container label {
-  align-items: center;
-  display: flex;
-  position: relative;
 }
