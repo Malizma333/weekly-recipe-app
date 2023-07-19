@@ -53,7 +53,23 @@ const AllergensList = ({ allergensString }) => {
 const RecipeLink = ({ link }) => {
   if(!link || link.length === 0) return;
 
-  return <a href={link} target="_blank" rel="noopener noreferrer">
-    Recipe Instructions
-  </a>
+  let url = validateURL(link)
+
+  if(url) {
+    return <a className = 'link-text' href={url} target="_blank" rel="noopener noreferrer">
+      Recipe Instructions
+    </a>
+  }
+
+  return link
+}
+
+function validateURL(string) {
+  try {
+    const parsedURL = new URL(string);
+    const formattedURL = `https://www.${parsedURL.hostname}`;
+    return formattedURL;
+  } catch (error) {
+    return null;
+  }
 }
