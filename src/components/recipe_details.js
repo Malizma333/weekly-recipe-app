@@ -1,5 +1,6 @@
 import './recipe_details.css';
 import { tableHeaders } from '../constants';
+import isURL from 'validator/lib/isURL';
 
 export const RecipeDetails = ({ selectedRecipe }) => {
   return (
@@ -53,7 +54,11 @@ const AllergensList = ({ allergensString }) => {
 const RecipeLink = ({ link }) => {
   if(!link || link.length === 0) return;
 
-  return <a href={link} target="_blank" rel="noopener noreferrer">
-    Recipe Instructions
-  </a>
+  if(isURL(link)) {
+    return <a href={link} target="_blank" rel="noopener noreferrer">
+      Recipe Instructions
+    </a>
+  }
+
+  return <text>{link}</text>
 }
