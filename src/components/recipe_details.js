@@ -10,7 +10,7 @@ export const RecipeDetails = ({ selectedRecipe }) => {
       </div>
       <p>{selectedRecipe[tableHeaders.desc]}</p>
       <AllergensList allergensString={ selectedRecipe[tableHeaders.allergens] } />
-      <RecipeLink link={ selectedRecipe[tableHeaders.link] } />
+      <RecipeInstructions instructions={ selectedRecipe[tableHeaders.link] } />
     </div>
   )
 }
@@ -50,10 +50,10 @@ const AllergensList = ({ allergensString }) => {
   )
 }
 
-const RecipeLink = ({ link }) => {
-  if(!link || link.length === 0) return;
+const RecipeInstructions = ({ instructions }) => {
+  if(!instructions || instructions.length === 0) return;
 
-  let url = validateURL(link)
+  let url = validateURL(instructions)
 
   if(url) {
     return <a className = 'link-text' href={url} target="_blank" rel="noopener noreferrer">
@@ -61,7 +61,9 @@ const RecipeLink = ({ link }) => {
     </a>
   }
 
-  return link
+  return <div className='recipe-instructions-container'>
+    {instructions}
+  </div>
 }
 
 function validateURL(string) {
