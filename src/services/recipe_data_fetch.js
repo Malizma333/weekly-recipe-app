@@ -1,24 +1,27 @@
-const { GoogleSpreadsheet } = require('google-spreadsheet');
+import { sheets } from '@googleapis/sheets';
 
-const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
+const serviceAccountAuth = new sheets.auth.GoogleAuth({
+  email: process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_EMAIL,
+  key: process.env.REACT_APP_GOOGLE_PRIVATE_KEY.replace(/\\n/gm, '\n'),
+  scopes: [
+    'https://www.googleapis.com/auth/spreadsheets',
+  ],
+});
 
-export default async function getRecipeData(req, res) {
-  const {query: { id }} = req;
-  console.log(id);
-  try {
-    if (!id) throw new Error();
 
-    await doc.useServiceAccountAuth({
-      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/gm, '\n')
-    });
+// const doc = new GoogleSpreadsheet(process.env.REACT_APP_GOOGLE_SHEET_ID, serviceAccountAuth);
 
-    const data = doc.getInfo();
+export default async function getRecipeData() {
+  // const authClient = await serviceAccountAuth.getClient();
 
-    res.status(200).json({ message: 'Success!' });
-    
-    return data;
-  } catch (error) {
-    res.status(500).json(error);
-  }
+  // const client = await sheets.sheets({
+  //     version: 'v1',
+  //     auth: authClient
+  // });
+
+  // const retrieveResponse = await client.spreadsheets
+
+  // console.log(retrieveResponse);
+  
+  return [];
 }
