@@ -10,7 +10,10 @@ export default async function writeRecipeDataToCSV(data) {
   row.push(data[tableHeaders.time])
 
   try {
-    const response = await fetch('http://localhost:9000/google_sheet', {
+    const url = process.env.NODE_ENV === 'production'
+      ? 'https://recipe-app-service-wpwz.onrender.com/google_sheet'
+      : 'http://localhost:9000/google_sheet'
+    const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify(row),
       headers: {

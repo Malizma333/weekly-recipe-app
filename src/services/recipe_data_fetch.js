@@ -1,8 +1,9 @@
 export default async function getRecipeData() {
   try {
-    const response = await fetch('http://localhost:9000/google_sheet', {
-      method: 'GET'
-    })
+    const url = process.env.NODE_ENV === 'production'
+      ? 'https://recipe-app-service-wpwz.onrender.com/google_sheet'
+      : 'http://localhost:9000/google_sheet'
+    const response = await fetch(url, { method: 'GET' })
     const result = await response.json();
     const headers = result[0];
     const recipes = [];
