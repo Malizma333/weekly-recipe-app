@@ -17,10 +17,10 @@ export const retrieveMealSchedule = () => {
 export const shuffleRecipes = () => {
   let recipeList = loadData(dataKeys.recipes);
 
-  if (!recipeList) {
+  if (!recipeList || recipeList.length === 0) {
     recipeList = [...recipeSheetData];
   }
-    
+
   const recipeSheetIds = recipeSheetData.map(recipe => recipe['Recipe Name']);
   recipeList = recipeList.filter(recipe => recipeSheetIds.includes(recipe['Recipe Name']));
 
