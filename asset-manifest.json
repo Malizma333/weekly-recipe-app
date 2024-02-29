@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/weekly-recipe-app/static/css/main.725a38d2.css",
-    "main.js": "/weekly-recipe-app/static/js/main.0895a5df.js",
-    "static/js/787.8806d36d.chunk.js": "/weekly-recipe-app/static/js/787.8806d36d.chunk.js",
+    "main.css": "/weekly-recipe-app/static/css/main.e71d87c3.css",
+    "main.js": "/weekly-recipe-app/static/js/main.f0357d83.js",
+    "static/js/787.f96c1ac0.chunk.js": "/weekly-recipe-app/static/js/787.f96c1ac0.chunk.js",
     "index.html": "/weekly-recipe-app/index.html",
-    "main.725a38d2.css.map": "/weekly-recipe-app/static/css/main.725a38d2.css.map",
-    "main.0895a5df.js.map": "/weekly-recipe-app/static/js/main.0895a5df.js.map",
-    "787.8806d36d.chunk.js.map": "/weekly-recipe-app/static/js/787.8806d36d.chunk.js.map"
+    "main.e71d87c3.css.map": "/weekly-recipe-app/static/css/main.e71d87c3.css.map",
+    "main.f0357d83.js.map": "/weekly-recipe-app/static/js/main.f0357d83.js.map",
+    "787.f96c1ac0.chunk.js.map": "/weekly-recipe-app/static/js/787.f96c1ac0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.725a38d2.css",
-    "static/js/main.0895a5df.js"
+    "static/css/main.e71d87c3.css",
+    "static/js/main.f0357d83.js"
   ]
 }
