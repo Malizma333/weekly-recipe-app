@@ -9,7 +9,7 @@ import { SelectedAllergensList } from './recipe_form/allergen_selection';
 import { PrepareTimeInput } from './recipe_form/prepare_time';
 import { FormButtons } from './recipe_form/form_buttons';
 
-import { writeRecipeDataToCSV } from '../../services/recipe_data_write';
+import writeRecipeDataToCSV from '../../services/recipe_data_write';
 import { tableHeaders, allergenOptions } from '../../constants';
 import isURL from 'validator/lib/isURL';
 
