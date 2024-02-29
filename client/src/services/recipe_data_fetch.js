@@ -1,6 +1,8 @@
 export default async function getRecipeData() {
   try {
-    const response = await fetch('http://localhost:9000/google_sheet')
+    const response = await fetch('http://localhost:9000/google_sheet', {
+      method: 'GET'
+    })
     const result = await response.json();
     const headers = result[0];
     const recipes = [];
